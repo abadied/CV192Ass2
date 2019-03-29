@@ -83,15 +83,15 @@ def Z_6():
     Y_values = np.arange(8)
     Z = np.zeros(len(Temp))
     for i, temp in enumerate(Temp):
-      for y_1 in Y_values:
-          row_1 = y2row(y_1,3)
-          for y_2 in Y_values:
-              row_2 = y2row(y_2,3)
-              for y_3 in Y_values:
-                  row_3 = y2row(y_3, 3)
-                  G_1, G_2, G_3 = G(row_1,temp), G(row_2, temp), G(row_3, temp)
-                  F1_2, F2_3 = F(row_1, row_2, temp), F(row_2, row_3, temp)
-                  Z[i] += G_1*G_2*G_3*F1_2*F2_3
+        for y_1 in Y_values:
+            row_1 = y2row(y_1,3)
+            for y_2 in Y_values:
+                row_2 = y2row(y_2,3)
+                for y_3 in Y_values:
+                    row_3 = y2row(y_3, 3)
+                    G_1, G_2, G_3 = G(row_1,temp), G(row_2, temp), G(row_3, temp)
+                    F1_2, F2_3 = F(row_1, row_2, temp), F(row_2, row_3, temp)
+                    Z[i] += G_1*G_2*G_3*F1_2*F2_3
     return Z
 
 
@@ -167,8 +167,8 @@ def ex_8(p, width):
             y = np.array([y2row(y_k) for y_k in sample(p[temp], width)])
             samples.append(y)
 
-        x11_x22 = [im[0, 0] * im[1, 1] for im in samples]
-        x11_x88 = [im[0, 0] * im[7, 7] for im in samples]
+        x11_x22 = [image[0, 0] * image[1, 1] for image in samples]
+        x11_x88 = [image[0, 0] * image[7, 7] for image in samples]
 
         e_1122 = np.sum(x11_x22, dtype=float) / 10000
         e_1188 = np.sum(x11_x88, dtype=float) / 10000
